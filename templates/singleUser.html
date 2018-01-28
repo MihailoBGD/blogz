@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> {{ welcome }} </h1>
+<h1> {{ title }} </h1>
+<h1> 
+    <form id= "singleUser" action= "/UserPage">
+        Author:
+        <input form= "individual_user" type= "submit" 
+            class= "link_button" name= "user_link" 
+            value= "{{ author }}"/>
+    </form>
+</h1>
+<p> {{ body }} </p>
+
+{% endblock %}

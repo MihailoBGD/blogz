@@ -9,6 +9,19 @@
     </head>
 <body>
 
+    <div>
+        <a href='/logout'>log out</a>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        <ul>
+        {% for messages in messages %}
+            <li>{{message}}</li>
+        {% endfor %}
+        </ul>
+    {% endwith %}
+
+
     {% block content %}
     {% endblock %}
 
