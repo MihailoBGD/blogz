@@ -118,12 +118,16 @@ def new_blog_entry():
 
 @app.route('/index')
 def allblogs():
-    return render_template('/index')
+    users = User.query.all()
+    return render_template('/index.html',users = users)
 
 @app.route('/singleuser', methods=['POST', 'GET'])
 def single_user():
     #Get a user object from the DB, based on their username
-    return render_template('/singleuser.html')
+    user_id = request.args.get('id')
+    user = User.query.filter_by(id=user_id).first()
+    blogs = Blog.query.filter_by(owner_id=user_id).first()
+    return render_template('/singleuser.html', blogs = blogs)
 
 @app.route('/logout')
 def logout():
@@ -135,42 +139,4 @@ if __name__ == '__main__':
 
 
 
-'''
-#todo create homepage that lists all users in db, on that page create links to individul bloggers pages
 
-
-
-@app.route('/index', methods=['POST', 'GET'])
-def all_bloggers():
-    users = User.query(all)
-
-    
-
-
-
-@app.route("/singleUser")
-def single_user():
-    welcome = "Not logged in"
-    if 'user' in session:
-       
-
-@app.route("/userpage")
-def userpage():
-    welcome = "Not logged in"
-    if 'user' in session:
-
-@app.route("/singleUser")
-def single_user():
-    welcome = "Not logged in"
-    if 'user' in session:
-        welcome = "Logged in as: " + session['user']
-    title = request.args.get('blog_title')
-    if title:
-        existing_blog = Blog.query.filter_by(title= title).first()
-        author = User.query.filter_by(id= existing_blog.owner_id).first()
-        return render_template("individual.html", 
-            title= existing_blog.title, body= existing_blog.body,
-            author= author.username, welcome= welcome)
-
-
-'''    
