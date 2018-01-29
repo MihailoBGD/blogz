@@ -116,6 +116,15 @@ def new_blog_entry():
 
     return render_template('new-blog-entry.html',title="Add-a-blog")
 
+@app.route('/index')
+def allblogs():
+    return render_template('/index')
+
+@app.route('/singleuser', methods=['POST', 'GET'])
+def single_user():
+    #Get a user object from the DB, based on their username
+    return render_template('/singleuser.html')
+
 @app.route('/logout')
 def logout():
     del session['username']
@@ -127,16 +136,16 @@ if __name__ == '__main__':
 
 
 '''
+#todo create homepage that lists all users in db, on that page create links to individul bloggers pages
 
 
 
+@app.route('/index', methods=['POST', 'GET'])
+def all_bloggers():
+    users = User.query(all)
 
-def get_user_by_name(self, username):
-    #Get a user object from the DB, based on their username
-    user = db
+    
 
-@app.route('/single-blog', methods=['POST', 'GET'])
-def single-blog():
 
 
 @app.route("/singleUser")

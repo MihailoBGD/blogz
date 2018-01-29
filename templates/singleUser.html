@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1> {{ welcome }} </h1>
-<h1> {{ title }} </h1>
+
 <h1> 
     <form id= "singleUser" action= "/UserPage">
         Author:
@@ -11,6 +10,5 @@
             value= "{{ author }}"/>
     </form>
 </h1>
-<p> {{ body }} </p>
 
 {% endblock %}
