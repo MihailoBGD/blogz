@@ -125,9 +125,11 @@ def allblogs():
 def single_user():
     #Get a user object from the DB, based on their username
     user_id = request.args.get('id')
-    user = User.query.filter_by(id=user_id).first()
-    blogs = Blog.query.filter_by(owner_id=user_id).first()
-    return render_template('/singleuser.html', blogs = blogs)
+    if user_id != None:
+        user = User.query.get(user_id)
+        blogs = Blog.query.filter_by(owner_id=user_id).all()
+        return render_template('/singleuser.html', blogs = blogs,user=user)
+    return redirect('/index')
 
 @app.route('/logout')
 def logout():
