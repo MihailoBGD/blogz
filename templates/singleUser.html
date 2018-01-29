@@ -4,8 +4,12 @@
 
 <h1>Author: {{user.username}}
 </h1>
-{% for blog in blogs %}
-<p> {{blog.title}}</p>
-{% endfor %}
+{% if blogs|length == 0 %}
+<p>this user has no blogs yet</p>
+{% else %}    
+    {% for blog in blogs %}
+        <p> <a href="/blog?id={{blog.id}}"> {{blog.title}} </a></p>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}

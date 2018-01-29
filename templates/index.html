@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 {% for user in users %}
+
+{% if user == 0 %}
+    <p>THERE ARE NO USERS YET</p>
+{% else %}
 <p> <a href="/singleuser?id={{user.id}}"> {{user.username}}</a></p>
+{% endif %}
 {% endfor %}
 {% endblock %}
